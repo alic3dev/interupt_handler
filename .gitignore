@@ -1,0 +1,5 @@
+# build
+objects
+library
+*.o
+

@@ -1,0 +1,16 @@
+#ifndef __INTERUPT_HANDLER_H
+#define __INTERUPT_HANDLER_H
+
+typedef void (*interupt_handler_on_interupt_function)(int); 
+
+extern unsigned char interupt_handler_interupted;
+extern interupt_handler_on_interupt_function* interupt_handler_on_interupt_functions;
+extern unsigned int interupt_handler_on_interupt_functions_length;
+
+void interupt_handler_initialize();
+void interupt_handler_interupt_function_add(interupt_handler_on_interupt_function);
+void interupt_handler_interupt_function_remove(interupt_handler_on_interupt_function);
+void interupt_handler_on_interupt(int);
+
+#endif
+
