@@ -1,13 +1,13 @@
-# interupt_handler
+# interrupt_handler
 
-a_utility_library_for_catching_interupts
+a_utility_library_for_catching_interrupts
 
 ## usage
 
 ### initialization
 
 ```c
-interupt_handler_initialize();
+interrupt_handler_initialize();
 ```
 
 ### callbacks
@@ -15,23 +15,23 @@ interupt_handler_initialize();
 #### add
 
 ```c
-interupt_handler_interupt_function_add(on_interupt_function);
+interrupt_handler_interrupt_function_add(on_interrupt_function);
 ```
 
 #### remove
 
 ```c
-interupt_handler_interupt_function_remove(on_interupt_function);
+interrupt_handler_interrupt_function_remove(on_interrupt_function);
 ```
 
 ### status
 
 ```c
-if (interupt_handler_interupted == 0) {
-  // not_interupted_yet
+if (interrupt_handler_interrupted == 0) {
+  // not_interrupted_yet
 } else {
-  // has_been_interupted
-  // `interupt_handler_interupted`:contains_interupt_code
+  // has_been_interrupted
+  // `interrupt_handler_interrupted`:contains_interrupt_code
 }
 ```
 

@@ -1,0 +1,16 @@
+#ifndef __INTERRUPT_HANDLER_H
+#define __INTERRUPT_HANDLER_H
+
+typedef void (*interrupt_handler_on_interrupt_function)(int); 
+
+extern unsigned char interrupt_handler_interrupted;
+extern interrupt_handler_on_interrupt_function* interrupt_handler_on_interrupt_functions;
+extern unsigned int interrupt_handler_on_interrupt_functions_length;
+
+void interrupt_handler_initialize();
+void interrupt_handler_interrupt_function_add(interrupt_handler_on_interrupt_function);
+void interrupt_handler_interrupt_function_remove(interrupt_handler_on_interrupt_function);
+void interrupt_handler_on_interrupt(int);
+
+#endif
+
