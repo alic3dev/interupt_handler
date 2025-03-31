@@ -1,16 +1,16 @@
-#ifndef __INTERUPT_HANDLER_H
-#define __INTERUPT_HANDLER_H
+#ifndef __INTERRUPT_HANDLER_H
+#define __INTERRUPT_HANDLER_H
 
-typedef void (*interupt_handler_on_interupt_function)(int); 
+typedef void (*interrupt_handler_on_interrupt_function)(int); 
 
-extern unsigned char interupt_handler_interupted;
-extern interupt_handler_on_interupt_function* interupt_handler_on_interupt_functions;
-extern unsigned int interupt_handler_on_interupt_functions_length;
+extern unsigned char interrupt_handler_interrupted;
+extern interrupt_handler_on_interrupt_function* interrupt_handler_on_interrupt_functions;
+extern unsigned int interrupt_handler_on_interrupt_functions_length;
 
-void interupt_handler_initialize();
-void interupt_handler_interupt_function_add(interupt_handler_on_interupt_function);
-void interupt_handler_interupt_function_remove(interupt_handler_on_interupt_function);
-void interupt_handler_on_interupt(int);
+void interrupt_handler_initialize();
+void interrupt_handler_interrupt_function_add(interrupt_handler_on_interrupt_function);
+void interrupt_handler_interrupt_function_remove(interrupt_handler_on_interrupt_function);
+void interrupt_handler_on_interrupt(int);
 
 #endif
 

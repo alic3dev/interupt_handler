@@ -1,4 +1,4 @@
-project_name=interupt_handler
+project_name=interrupt_handler
 
 include_directory=include
 library_directory=library
@@ -25,5 +25,5 @@ $(objects_directory)/%.o: $(sources_directory)/%.c
 	$(cc) $(c_flags) -c $< -o $@
 
 clean:
-	-rm $(out_file) $(objects_directory)/*.o 2> /dev/null
+	-rm $(out_file) $(library_directory)/*.o $(objects_directory)/*.o 2> /dev/null
 
