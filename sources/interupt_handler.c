@@ -80,11 +80,7 @@ void interupt_handler_interupt_function_remove(
 }
 
 void interupt_handler_on_interupt(int interupt_code) {
-  if (interupt_handler_interupted == 0) {
-    return;
-  }
-  
-  interupt_handler_interupted = 1;
+  interupt_handler_interupted = interupt_code;
 
   for (
     unsigned int interupt_handler_on_interupt_function_index = 0;
