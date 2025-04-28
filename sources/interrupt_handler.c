@@ -1,8 +1,10 @@
 #include "interrupt_handler.h"
 
+#include <pthread.h>
 #include <signal.h>
 #include <stdlib.h>
 
+pthread_mutex_t interrupt_handler_interrupted_mutex;
 unsigned char interrupt_handler_interrupted = 0;
 
 interrupt_handler_on_interrupt_function* interrupt_handler_on_interrupt_functions;
@@ -16,6 +18,22 @@ void interrupt_handler_initialize() {
 
   struct sigaction signal_action;
   signal_action.sa_handler = interrupt_handler_on_interrupt;
+  sigaction(SIGINT, &signal_action, (void*)0);
+}
+
+void interrupt_handler_initialize_thread_safe() {
+  pthread_mutex_init(
+    &interrupt_handler_interrupted_mutex,
+    (void*)0
+  );
+
+  interrupt_handler_on_interrupt_functions = malloc(
+    sizeof(interrupt_handler_on_interrupt_function) *
+    interrupt_handler_on_interrupt_functions_length
+  );
+
+  struct sigaction signal_action;
+  signal_action.sa_handler = interrupt_handler_on_interrupt_thread_safe;
   sigaction(SIGINT, &signal_action, (void*)0);
 }
 
@@ -93,3 +111,8 @@ void interrupt_handler_on_interrupt(int interrupt_code) {
   }
 }
 
+void interrupt_handler_on_interrupt_thread_safe(int interrupt_code) {
+  pthread_mutex_lock(&interrupt_handler_interrupted_mutex);
+  interrupt_handler_on_interrupt(interrupt_code);
+  pthread_mutex_unlock(&interrupt_handler_interrupted_mutex);
+}

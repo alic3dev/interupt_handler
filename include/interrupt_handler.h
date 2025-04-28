@@ -8,9 +8,10 @@ extern interrupt_handler_on_interrupt_function* interrupt_handler_on_interrupt_f
 extern unsigned int interrupt_handler_on_interrupt_functions_length;
 
 void interrupt_handler_initialize();
+void interrupt_handler_initialize_thread_safe();
 void interrupt_handler_interrupt_function_add(interrupt_handler_on_interrupt_function);
 void interrupt_handler_interrupt_function_remove(interrupt_handler_on_interrupt_function);
 void interrupt_handler_on_interrupt(int);
+void interrupt_handler_on_interrupt_thread_safe(int);
 
 #endif
-
